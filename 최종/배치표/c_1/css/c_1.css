@@ -1,0 +1,85 @@
+/* body{
+    padding: 30px 0px 0px 0px;
+    margin: 0 auto;
+    width: max-content;
+} */
+
+.placement_btn:hover{
+    transform: scale(1.1);
+}
+
+.placement_pick{
+    align-items: center;
+    text-align: center;
+    float: left;
+}
+
+.placement{
+    float:left;
+}
+
+.placement_door{
+    background-color: rgb(255, 242, 224);
+    font-size: 5px;
+    border: 1px solid black;
+    width: max-content;
+    padding: 10px;
+    margin: 10px;
+    float: left; 
+}
+
+#placement_chair_1, 
+#placement_chair_2,
+#placement_chair_3,
+#placement_chair_4,
+#placement_chair_5,
+#placement_chair_6,
+#placement_chair_7,
+#placement_chair_8,
+#placement_chair_9,
+#placement_chair_10,
+#placement_chair_11,
+#placement_chair_12,
+#placement_chair_13,
+#placement_chair_14,
+#placement_chair_15,
+#placement_chair_16,
+#placement_chair_17,
+#placement_chair_18,
+#placement_chair_19,
+#placement_chair_20,
+#placement_chair_21,
+#placement_chair_22,
+#placement_chair_23,
+#placement_chair_24{
+    cursor: pointer;
+    font-size: 5px;
+    border: 1px solid black;
+    width: max-content;
+    padding: 4px;
+    margin: 4px;
+    float: left;
+}
+
+.placement_table{
+    font-size: 5px;
+    background-color: white;
+    border: 1px solid black;
+    width: max-content;
+    padding: 4px;
+    margin: 4px;
+    float: left;
+    position: absolute;
+    transform: translate(75%, 50%);
+}
+
+.placement_kitchen{
+    text-align: center;
+    background-color: rgb(255, 242, 224);
+    font-size: 5px;
+    border: 1px solid black;
+    width: 188px;
+    padding: 5px 4px 5px 4px;
+    margin: 4px;
+    float: left; 
+}

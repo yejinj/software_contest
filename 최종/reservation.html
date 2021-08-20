@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css 리셋 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <!-- a태그 밑줄 없애기 -->
+    <style type="text/css"> 
+        a { text-decoration:none }
+    </style> 
+    <!-- 웹 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- css, js 파일 연결 -->
+    <link rel="stylesheet" href="./css/reservation.css">
+        <!-- defer속성은 제일 마지막에 읽어줘라는 뜻 -->
+    <script defer src="./js/reservation.js"></script>
+    <!-- 웹사이트 이름 -->
+    <title>예약</title>
+    <!-- 파비콘 설정 -->
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+    <!-- 구글 아이콘 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="./js/map.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5168a2647914ad98da215bfd2d30b6e9&libraries=services"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+</head>
+<body>
+    <header>
+        <!-- X 클릭 시 햄버거 표시 -->
+        <div id="header_x">
+            <img src="../image/x.png"
+            id="header_x_set"
+            alt="x 메뉴"/>
+        </div>
+
+        <!-- 햄버거 클릭 시 X 표시 -->
+        <div id="header_hamburger" style="display: none;">
+            <img src="../image/hamburger.png"
+            id="header_hamburger_set"
+            alt="햄버거 메뉴"/>
+        </div>
+
+        <!-- 상단 로고 -->
+        <div class="logo">
+            <a onclick="location.href='index.html'" style="cursor: pointer;">
+                <img src="../image/logo.png" alt="밥사 로고" />
+            </a>
+        </div>
+
+        <!-- 우측 버튼 -->
+        <div class="btn">
+            <div class="btn_top">
+                <a class="sign_up" href="sign_in.html">
+                    회원가입
+                </a>
+                <a class="log_in" href="sign_in.html">
+                    로그인
+                </a>
+            </div>
+            <div class="btn_bottom">
+                <input id="search_box" placeholder="검색어를 입력하세요." />
+                <span class="material-icons">
+                    search
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hamburger_content" style="display: none;">
+            <div class="wrapper">
+                <div id="my_information">
+                    <div id="my_information_name" style="float: left;">
+                        <b>서수정</b>님 |
+                    </div>
+                    
+                    <button id="my_information_btn" onclick="my_information('my_information_hidden'); return false;">
+                        🔒︎ 내 정보
+                    </button>
+                    
+                    <button class="log_in_out" id="logout" onclick="logout()"> 로그아웃 </button>
+
+                    <div id="login_ment" style="height: 25px; display: none">
+                        <div id="login_phrase">
+                            로그인 후 이용해주세요
+                        </div>
+
+                        <button class="log_in_out" id="login" onclick="login_func()">
+                            로그인
+                        </button>
+                    </div>
+                </div>
+
+                
+        
+                <div id="my_reservation">
+                    최근에 한 예약
+                    <div id="restaurant_reserved_list"> 예약한 식당이 표시됩니다 </div>
+        
+                    <div style="display: none;" id="reservation_delete_alert">
+                        삭제되었습니다.
+                    </div>
+        
+                    <button class="restaurant_btn">
+                        바로가기
+                    </button>
+                    <button class="restaurant_btn" onclick="delete_reserve()">
+                        예약 취소
+                    </button>
+                </div>
+        
+                <div id="wish_restaurant">
+                    💛 최근에 찜한 가게
+                    <div id="restaurant_wished"> 찜한 식당이 표시됩니다 </div>
+        
+                    <div style="display: none;" id="wish_delete_alert">
+                        삭제되었습니다.
+                    </div>
+        
+                    <button class="restaurant_btn">
+                        바로가기
+                    </button>
+                    <button class="restaurant_btn" onclick="delete_love()">
+                        찜 취소
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 클릭하면 나오는 DIV -->
+        <div id="my_information_hidden">
+            <img src="../image/cancel.png"
+            alt="x"
+            class="close_x"
+            onclick="my_information_x()">
+    
+            <b> 내 정보 확인 </b>
+    
+            <div id="my_information_profile">
+                프로필<br>
+                이름<br>
+                나이<br>
+            </div>
+    
+            <div id="my_information_contact">
+                <b> 연락처 및 기본 정보 설정 </b><br>
+                연락처 : <br>
+                본인 확인 연락처 : <br>
+                휴대 전화 : 
+            </div>
+    
+            <div id="my_information_location">
+                <b >지역 설정 </b><br>
+                설정된 지역이 없습니다 <br>
+                지금 내 주변의 관심지역을 설정하세요! <br>
+                <button id="my_information_contact_btn">
+                    관심지역 설정하러 가기
+                </button>
+            </div>
+        </div>
+
+        <!-- 센터 -->
+        <div class="center">
+            <!-- 가게 정보 -->
+            <div class="store_info">
+                <!-- 가게 이름 -->
+                <div id="res_name" class="name">본죽&비빔밥cafe 성신여대점</div>
+                <!-- 상세 정보 -->
+                <div class="detail">
+                    <!-- 주소 -->
+                    <div class="location">
+                        <span class="material-icons">
+                            place
+                        </span>
+                        <span class="address">
+                            서울 성북구 보문로34길 51
+                        </span>
+                        <!-- 지도 보기 -->
+                        <button type="button" class="see_map" onclick= "see_map()">
+                            지도
+                        </button>
+                    </div>
+                    <!-- 전화번호 -->
+                    <div class="number">
+                        <span class="material-icons">
+                            phone
+                        </span>
+                        02-953-3500
+                    </div>
+                    <!-- 정보 -->
+                    <div class="addition_title">
+                        정보
+                    </div>
+                    <div class="addition">
+                        죽 갈기 선택(갈아서 제공 시, 일반죽 대비 맛과 식감이 약해질 수 있습니다)
+                        <br>✔ 갈지 않음(일반적으로 제공되는 맛있는 죽입니다)
+                        <br>✔ 약 50% 갈아서 (밥알과 주재료가 반정도 갈린 상태, 환자식): 소화가 불편하신 분 추천
+                        <br>✔ 100% 갈아서 (미음 수준으로 갈린 상태, 환자식): 이가 불편해 씹기 어려우신 분 추천
+                        <br>※갈기 서비스는 주재료와 밥을 함께 갈아 제공됩니다
+                        <br>※갈기 선택 시, 고명(김가루,부추 등)이 제공되지 않습니다
+                    </div>
+                    <!-- 정보 가림막 -->
+                    <div class="see_info">
+                        <button type="button" class="btn_info">내용 보기</button>
+                    </div>
+                </div>
+                <div class="social_distancing">
+                    <div class="title">사회적 거리두기 4단계 규제</div>
+                    <div class="content">
+                        ▸ 사적 모임<br>- 18시 이전: 4인까지 / 18시 이후: 2인까지
+                    <br>▸ 테이블 간 1m 거리두기 또는 좌석/테이블 간 한 칸 띄우기 또는 테이블 간 칸막이 설치
+                    <br>▸ 22시 이후 포장ㆍ배달만 허용
+                    </div>
+                </div>
+            </div>
+            <!-- 선택 사항 -->
+            <div class="option">
+                <!-- 날짜 -->
+                <div class="date">
+                    <div class="date_title">
+                        <div class="title">
+                        날짜
+                        </div>
+                        <div id="today"></div>
+                    </div>
+                </div>
+                <!-- 시간 -->
+                <div class="time_group">
+                    <div class="time_title">
+                        <div class="title">시간</div>
+                        <div id="the_time"></div>
+                    </div>
+                    <div id="time_table">
+                        <ul>
+                            <li><button class="time" id="10:00">10:00</button></li>
+                            <li><button class="time" id="10:30">10:30</button></li>
+                            <li><button class="time" id="11:00">11:00</button></li>
+                            <li><button class="time" id="11:30">11:30</button></li>
+                            <li><button class="time" id="12:00">12:00</button></li>
+                            <li><button class="time" id="12:30">12:30</button></li>
+                            <li><button class="time" id="13:00">13:00</button></li>
+                            <li><button class="time" id="13:30">13:30</button></li>
+                            <li><button class="time" id="14:00">14:00</button></li>
+                            <li><button class="time" id="14:30">14:30</button></li>
+                            <li><button class="time" id="15:00">15:00</button></li>
+                            <li><button class="time" id="15:30">15:30</button></li>
+                            <li><button class="time" id="16:00">16:00</button></li>
+                            <li><button class="time" id="16:30">16:30</button></li>
+                            <li><button class="time" id="17:00">17:00</button></li>
+                            <li><button class="time" id="17:30">17:30</button></li>
+                            <li><button class="time" id="18:00">18:00</button></li>
+                            <li><button class="time" id="18:30">18:30</button></li>
+                            <li><button class="time" id="19:00">19:00</button></li>
+                            <li><button class="time" id="19:30">19:30</button></li>
+                            <li><button class="time" id="20:00">20:00</button></li>
+                            <li><button class="time" id="20:30">20:30</button></li>
+                            <li><button class="time" id="21:00">21:00</button></li>
+                            <li><button class="time" id="21:30">21:30</button></li>
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+                <!-- 인원수 -->
+                <div class="number">
+                    <div class="number_title">
+                        인원수
+                    </div>
+                    <div class="info">
+                        <span class="material-icons-outlined">
+                            info
+                        </span>
+                        <span id="num_description">
+
+                        </span>
+                    </div>
+                    <input type="number" id="in_number" value="1" min="1" max="4" required />
+                </div>
+            </div>
+            <!-- 메뉴 -->
+            <div class="menu_box">
+                <form action="" accept-charset="utf-8" name="menu_info" method="GET">
+                    <div class="menu_title">
+                        <div class="title">
+                            메뉴
+                        </div>
+                        <div class="reset">
+                            <input type="reset" value="초기화" />
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="menu 1">
+                            <input type="checkbox" name="menu" value="능이삼계죽" class="check_menu" />
+                            <label>
+                                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210706_222%2F1625528724041d8aaT_JPEG%2FJE1yWs2FDVvGFoXdfIdGLa6H.jpg" alt="능이삼계죽" />
+                                <div class="name">능이삼계죽</div>
+                                <div class="description" title="귀한 능이버섯과 국내산 수삼 한 뿌리를&#13;통째로 넣고 푹 고아낸 완벽한 여름 보양식">귀한 능이버섯과 국내산 수삼 한 뿌리를 통째로 넣고 푹 고아낸 완벽한 여름 보양식</div>
+                                <div class="soup_price">15,000<span class="won">원</span></div>
+                                <select class = "salinity">
+                                    <optgroup label = "죽 염도 선택">
+                                        <option value = "original">기본(염도 100%)</option>
+                                        <option value = "little">약간 싱겁게(염도 60%)</option>
+                                        <option value = "very">아주 싱겁게(염도 20%)</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="menu 2">
+                            <input type="checkbox" name="menu" value="본나물비빔밥" class="check_menu" />
+                            <label>
+                                <img src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=f320_320&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210401_223%2F16172339465346u7CD_JPEG%2FzA4RG4rF62G5sIj3EfJGuath.jpg" alt="본나물비빔밥" />
+                                <div class="name">본나물비빔밥</div>
+                                <div class="description" title="전통 빛깔 담은 오색 나물에 계란 후라이를 더해 더 건강한 비빔밥">전통 빛깔 담은 오색 나물에 계란 후라이를 더해 더 건강한 비빔밥</div>
+                                <div class="price">8,000<span class="won">원</span></div>
+                                <select class = "sauce">
+                                    <optgroup label = "비빔장 선택">
+                                        <option value = "pepper">단호박고추장(기본)</option>
+                                        <option value = "soy">레몬간장</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="menu 3">
+                            <input type="checkbox" name="menu" value="소불고기비빔밥" />
+                            <label>
+                                <img src="https://ldb-phinf.pstatic.net/20210401_225/1617233963878gNLXY_JPEG/Qr8tUf2mJCtxPNzYqUDKcu5q.jpg" alt="소불고기비빔밥" />
+                                <div class="name">소불고기비빔밥</div>
+                                <div class="description" title="특제 양념에 재운 소 불고기가 듬뿍 들어 감칠맛 가득한 대표 메뉴">특제 양념에 재운 소 불고기가 듬뿍 들어 감칠맛 가득한 대표 메뉴</div>
+                                <div class="price">9,500<span class="won">원</span></div>
+                                <select class = "sauce">
+                                    <optgroup label = "비빔장 선택">
+                                        <option value = "pepper">단호박고추장(기본)</option>
+                                        <option value = "soy">레몬간장</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="menu 4">
+                            <input type="checkbox" name="menu" value="매콤낙지비빔밥" />
+                            <label>
+                                <img src="https://ldb-phinf.pstatic.net/20210401_6/1617233975855KnCkp_JPEG/XVJrHKkJGZj1NGZP6lCcKVuK.jpg" alt="매콤낙지비빔밥" />
+                                <div class="name">매콤낙지비빔밥</div>
+                                <div class="description" title="매콤한 양념으로 맛을 낸 쫄깃한 낙지볶음으로 입맛 돋우는 인기 메뉴">매콤한 양념으로 맛을 낸 쫄깃한 낙지볶음으로 입맛 돋우는 인기 메뉴</div>
+                                <div class="price">9,500<span class="won">원</span></div>
+                            </label>
+                        </div>
+                        <div class="menu 5">
+                            <input type="checkbox" name="menu" value="차돌강된장비빔밥" />
+                            <label>
+                                <img src="https://ldb-phinf.pstatic.net/20210401_252/1617233984052Db3Iz_JPEG/Kkcbx-xXbcHZS_ezuTsJBIY9.jpg" alt="차돌강된장비빔밥" />
+                                <div class="name">차돌강된장비빔밥</div>
+                                <div class="description" title="고소한 차돌을 듬뿍 넣고 자박하게 끓여낸 강된장에&#13;두부까지 더해 부드럽고 든든한 한끼">고소한 차돌을 듬뿍 넣고 자박하게 끓여낸 강된장에 두부까지 더해 부드럽고 든든한 한끼</div>
+                                <div class="price">9,500<span class="won">원</span></div>
+                            </label>
+                        </div>
+                        <div class="menu 6">
+                            <input type="checkbox" name="menu" value="게자박장비빔밥" />
+                            <label>
+                                <img src="https://ldb-phinf.pstatic.net/20210401_4/1617234013871P7WRg_JPEG/Li-rlClF1xPM3_bwdToMvYnN.jpg" alt="게자박장비빔밥" />
+                                <div class="name">게자박장비빔밥</div>
+                                <div class="description" title="고소한 내장 소스에 매콤한 양념을 더한 게자박장을&#13;탱탱한 홍게 몸통 살과 함께 비벼 먹는 별미 메뉴">고소한 내장 소스에 매콤한 양념을 더한 게자박장을 탱탱한 홍게 몸통 살과 함께 비벼 먹는 별미 메뉴</div>
+                                <div class="price">11,000<span class="won">원</span></div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 잔여좌석 -->
+            <div class="seat">
+                <div class="seat_title">
+                    <div class="title">
+                        좌석 선택
+                    </div>
+                    <div id="seat_number"></div>
+                    <div class="seat_icon">
+                        <div class="icon cant">
+                            <div class="shape cant"></div>
+                            <span class="title">
+                                선택불가
+                            </span>
+                        </div>
+                        <div class="icon can">
+                            <div class="shape can"></div>
+                            <span class="title">
+                                선택가능
+                            </span>
+                        </div>
+                        <div class="icon choice">
+                            <div class="shape choice"></div>
+                            <span class="title">
+                                선택
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="select_seat">
+                    <div class="counter">카운터</div>
+                    <div class="container">
+                        <div class="table-left">
+                            <div class="table2 1">
+                                <button class="chair 1" id="T1-1" disabled>1</button>
+                                T1
+                                <button class="chair 2" id="T1-2" disabled>2</button>
+                            </div>
+                            <div class="table2 2" id="T2">
+                                <button class="chair 1" id="T2-1">1</button>
+                                T2
+                                <button class="chair 2" id="T2-2">2</button>
+                            </div>
+                            <div class="table2 3" id="T3">
+                                <button class="chair 1" id="T3-1">1</button>
+                                T3
+                                <button class="chair 2" id="T3-2">2</button>
+                            </div>
+                            <div class="table2 4" id="T4">
+                                <button class="chair 1" id="T4-1">1</button>
+                                T4
+                                <button class="chair 2" id="T4-2">2</button>
+                            </div>
+                            <div class="table2 5" id="T5">
+                                <button class="chair 1" id="T5-1">1</button>
+                                T5
+                                <button class="chair 2" id="T5-2">2</button>
+                            </div>
+                            </div>
+                            <div class="table-right">
+                                <div class="table4 6" id="T6">
+                                    <button class="chair 1" id="T6-1">1</button>
+                                    T6
+                                    <button class="chair 2" id="T6-2">2</button>
+                                    <button class="chair 3" id="T6-3">3</button>
+                                    <br>
+                                    <button class="chair 4" id="T6-4">4</button>
+                                </div>
+                                <div class="table2 7" id="T7">
+                                    <button class="chair 1" id="T7-1">1</button>
+                                    T7
+                                    <button class="chair 2" id="T7-2">2</button>
+                                </div>
+                                <div class="table4 8" id="T8">
+                                    <button class="chair 1" id="T8-1">1</button>
+                                    T8
+                                    <button class="chair 2" id="T8-2">2</button>
+                                    <button class="chair 3" id="T8-3">3</button>
+                                    <br>
+                                    <button class="chair 4" id="T8-4">4</button>
+                                </div>
+                                <div class="table2 9" id="T9">
+                                    <button class="chair 1" id="T9-1" disabled>1</button>
+                                    T9
+                                    <button class="chair 2" id="T9-2" disabled>2</button>
+                                </div>
+                                <div class="table4 10" id="T10">
+                                    <button class="chair 1" id="T10-1">1</button>
+                                    T10
+                                    <button class="chair 2" id="T10-2">2</button>
+                                    <button class="chair 3" id="T10-3">3</button>
+                                    <br>
+                                    <button class="chair 4" id="T10-4">4</button>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="entrance">
+                        <span class="material-icons-outlined">
+                            arrow_upward
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- 가격&결제 -->
+            <div class="payment">
+                <!-- 요청사항 -->
+                <div class="request">
+                    <div class="request_title">
+                        요청 사항
+                    </div>
+                    <input type="text" placeholder="(선택) 요청 사항을 입력해 주세요"/>
+                </div>
+                <!-- 장바구니 -->
+                <div class="menu_basket">
+                    <div class="basket_title">
+                        <div class="title">결제</div>
+                        <div class="final">| 시간 </div>
+                        <div id="final_time"></div>
+                        <div class="final st">| 좌석 </div>
+                        <div id="final_seat"></div>
+
+                    </div>
+                    <div class="basket">
+                        <div class="left">
+                            <div class="basket_menu">
+                                <div class="menu_name"></div>
+                                <div class="price" id="price_soup">
+                                    00,000<span class="won">원</span>
+                                </div>
+                                <div class="amount">
+                                    <label for="amount">수량:</label>
+                                    <input type="number" class="count" name="amount" value="1" min="1" />
+                                </div>
+                                <span class="select value" id="select_value"></span>
+                            </div>
+                            <div class="basket_menu2"> </div>
+                        </div>
+                        <div class="right">
+                            <div class="wrapper">
+                                <div class="total_price">
+                                    총 주문금액:
+                                    <span id="to_price">
+                                        00,000<span class="won">원</span>
+                                    </span>
+                                </div>
+                                <div class="method_payment">
+                                    <div class="title">결제 수단</div>
+                                    <label>
+                                        <input type="radio" class="card" name="method" /> 신용/체크카드
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="cellphone" name="method" /> 휴대폰결제
+                                    </label>
+                                </div>
+                                <div class="submit">
+                                    <label>
+                                        <a href="javascript:sendLink()"><input onclick="fin_reser.html" type="submit" class="btn_submit" style="cursor: pointer;" value="예약 & 결제하기"  /></a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

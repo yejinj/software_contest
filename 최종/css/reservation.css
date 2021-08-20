@@ -1,0 +1,970 @@
+body{
+    background: #f2f2f2;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration:none
+}
+
+/* HEADER */
+header{
+    width: 100%;
+    height: 85px;
+    background-color: #BFBFBF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+header div{
+    display: inline;
+    height: 50px;
+    width: 50px;
+}
+
+/* 헤더 좌측 햄버거 */
+#header_x, #header_hamburger{
+    width: 20%;
+    display: flex;
+    cursor: pointer;
+}
+
+#header_x_set, #header_hamburger_set{
+    margin: 25px 0px 0px 20px;
+}
+
+.hamburger img{
+    height: 35px;
+    width: 36px;
+    margin: auto 0;
+    padding-left: 23px;
+}
+
+main{
+    position: relative;
+}
+
+/* 햄버거바 하단 */
+.hamburger_content{
+    top: 0;
+    left: 0;
+    height: 320px;
+    z-index: 0;
+    margin-top: 2px;
+    margin: 0 auto;
+    position: absolute;
+    background-color: #FEFF90;
+    width: 265px;
+    text-align: left;
+    z-index: 10;
+}
+
+.hamburger_content .wrapper{
+    position: absolute;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+/* 스크롤바 설정*/
+.wrapper::-webkit-scrollbar{
+    width: 6px;
+}
+
+/* 스크롤바 막대 설정*/
+.wrapper::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #BFBFBF;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 20px;    
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.wrapper::-webkit-scrollbar-track{
+    background-color: #FEFF90;
+}
+
+#my_information_name{
+    cursor: pointer;
+    width: 70px;
+    height: 25px;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    background-color: #FEFF90;
+}
+
+#my_information_name:hover{
+    transform: scale(1.1);
+}
+
+#my_information_btn{
+    border-radius: 5px;
+    cursor: pointer;
+    width: 70px;
+    height: 25px;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    background-color: #FEFF90;
+    border: 1px black solid;
+}
+
+#my_information_btn:hover{
+    transform: scale(1.1);
+}
+
+#login_phrase{
+    cursor: pointer;
+    float: left;
+    height: 25px;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    background-color: #FEFF90;
+}
+
+#login{
+    float: left;
+    margin: 0px 5px 0px 5px;
+}
+
+#my_information{
+    margin: 15px 0px 30px 13px;
+}
+
+.log_in_out{
+    border-radius: 5px;
+    margin: 0px 0px 0px 0px;
+    cursor: pointer;
+    width: 70px;
+    height: 25px;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    background-color: #FEFF90;
+    border: 1px rgb(85, 20, 20) solid;
+}
+
+.log_in_out:hover{
+    transform: scale(1.1);
+}
+
+#my_reservation, #wish_restaurant{
+    margin-bottom: 30px;
+    margin-left: 5px;
+    width: 230px;
+    padding: 20px;
+    background-color: white;
+    height: 60px;
+    padding: 15px 0px 20px 15px;
+}
+
+#restaurant_reserved_list, #reservation_delete_alert{
+    color: brown;
+    font-size: 15px;
+    padding: 2px;
+    z-index: 0;
+}
+
+.restaurant_btn{
+    margin: 5px;
+    vertical-align: middle;
+    float: left;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 254, 241);
+    border: 1px rgb(124, 124, 124) solid;
+}
+
+#my_reservation_bottom{
+    line-height: 140%;
+    padding: 10px 0px 10px 5px;
+    font-size: smaller;
+}
+
+.my_reservation_font{
+    color: brown;
+    font-weight: 500;
+}
+
+#restaurant_wished, #wish_delete_alert{
+    color: brown;
+    font-size: 15px;
+    padding: 2px;
+    z-index: 0;
+}
+
+.restaurant_btn:hover{
+    transform: scale(1.1);
+}
+
+#list_restaurant{
+    margin: 15px 0px 15px 5px;
+    width: 240px;
+    padding: 15px 0px 0px 10px;
+    background-color: white;
+}
+
+#mylocation{
+    background-color: lightgoldenrodyellow;
+    margin: 0px 0px 0px 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(219, 205, 173);
+    cursor: pointer;
+}
+
+#mylocation:hover{
+    transform: scale(1.1);
+}
+
+.list_restaurant_font{
+    float: left;
+    margin: 0px 0px 0px 25px;
+}
+
+.list_restaurant_select{
+    color: brown;
+    font-size: 15px;
+}
+
+.hb_menu_rt:hover{
+    transform: scale(1.1);
+}
+
+#list_restaurant_select{
+    line-height: 140%;
+    padding: 10px 0px 10px 5px;
+    color: black;
+}
+
+#list_restaurant_btn:hover{
+    transform: scale(1.1);
+}
+
+.list_restaurant_select{
+    height: 20px;
+    width: 60px;
+    font-size: smaller;
+    margin-left: 100px;
+    background-color: white;
+    border: 1px white solid;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.list_restaurant_select:hover{
+    transform: scale(1.1);
+}
+
+#list_restaurant_korean, #list_restaurant_else{
+    color: grey;
+    margin: 0px 0px 0px 15px;
+    display: none;
+}
+
+#login_hidden{
+    box-shadow: 2.5px 2.5px 2.5px 2.5px rgb(175, 175, 175);
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    width: 450px;
+    height: 230px;
+    z-index: 9999;
+    position: absolute;
+}
+
+
+#my_information_hidden{
+    display: none;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px rgb(175, 175, 175);
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    top: 25%;
+    left: 50%;
+    background-color: white;
+    width: 450px;
+    height: 460px;
+    z-index: 9999;
+    position: absolute;
+}
+
+.close_x{
+    float: right;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#my_information_hidden_x:hover{
+    transform: scale(1.1);
+}
+
+#my_information_profile, #my_information_contact, #my_information_location{
+    line-height: 160%;
+    text-align: left;
+    padding: 15px 0px 15px 0px;
+    font-size: 18px;
+}
+
+#my_information_contact_btn{
+    margin: 5px 0px 5px 0px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+#my_information_contact_btn:hover{
+    transform: scale(1.1);
+}
+/* 상단 로고 */
+header .logo{
+    width: 60%;
+    display: flex;
+}
+
+header .logo a{
+    margin: auto;
+}
+
+header .logo a img{
+    height: 75px;
+}
+
+header .hamburger_detail{
+    cursor: pointer;
+}
+
+/* 우측 버튼 */
+header .btn {
+    width: 20%;
+}
+
+header .btn div{
+    display: block;
+    height: 42.5px;
+    width: 100%;
+}
+
+header .btn .btn_top{
+    justify-content: center;
+    align-items: center;
+}
+
+header .btn .btn_top a{
+    padding: 10px 10px 10px 10px;
+    float: right;
+    font-size: 15px;
+    color: black;
+    font-weight: 550;
+    margin: auto 5px;
+}
+
+header .btn .btn_top a:hover{
+    transform: scale(1.1);
+}
+
+header .btn .btn_bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .btn .btn_bottom input{
+    width: 80%;
+    height: 25px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+header .btn .btn_bottom span{
+    color: black;
+}
+
+#search_box{
+    margin: 0px 0px 5px 5px;
+}
+
+/* 센터 */
+.center {
+    margin: 85px auto;
+    width: 960px;
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* 가게 정보 */
+.store_info{
+    line-height: 140%;
+    background-color: white;
+    padding: 5px;
+}
+
+.store_info .name{
+    font-size: 18px;
+    font-weight: 700;  
+    color: #000000;
+    display: flex;
+    overflow: hidden;
+}
+
+/* 상세 정보 */
+main .store_info .detail{
+    margin: 5px;
+    font-size: 15px;
+    height: 50%;
+    position: relative;
+}
+
+main .store_info .material-icons{
+    font-size: 14px;
+    color: #949494;
+}
+
+.store_info .detail .location .see_map{
+    background-color: #FEFF90;
+    padding: 0 5px;
+    margin-left: 8px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0;
+    outline: 0;
+}
+
+.store_info .detail .addition{
+    height: 60%;
+    font-size: 12px;
+    overflow-y: scroll;
+    line-height: 140%;
+    border-bottom: 1px #BFBFBF solid;
+    position: absolute;
+}
+
+/* 스크롤바 설정*/
+.addition::-webkit-scrollbar{
+    width: 6px;
+}
+
+    /* 스크롤바 막대 설정*/
+.addition::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #BFBFBF;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 20px;    
+}
+
+    /* 스크롤바 뒷 배경 설정*/
+.addition::-webkit-scrollbar-track{
+    background-color: #FEFF90;
+}
+
+.store_info .detail .addition_title{
+    margin: 3px 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.store_info .detail .see_info{
+    height: 62%;
+    width: 100%;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    display: flex;
+}
+
+.store_info .detail .see_info .btn_info{
+    border: 0;
+    outline: 0;
+    margin: auto;
+    background-color: #FEFF90;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 3px 8px;
+}
+
+.store_info .social_distancing{
+    height: 42%;
+    margin-top: 5px;
+}
+
+.store_info .social_distancing .title{
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.store_info .social_distancing .content{
+    font-size: 16px;
+}
+
+/* 선택 사항 */
+main .option{
+    padding: 0 5px;
+    background-color: white;
+    line-height: 140%;
+}
+
+/* 날짜 */
+.option .date .date_title{
+    height: 50px;
+    border-bottom: 1px #BFBFBF solid;
+    display: flex;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.option .date .date_title div{
+    margin: auto 5px;
+}
+
+.option .date .date_title #today{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* 시간 */
+.option .time_group .time_title{
+    font-size: 17px;
+    font-weight: 500;
+    height: 50px;
+    border-bottom: 1px #BFBFBF solid;
+    display: flex;
+}
+
+.option .time_group .time_title div{
+    margin: auto 5px;
+}
+
+.option .time_group .time_title #the_time{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.option .time_group #time_table{
+    margin-top: 5px;
+    height: 245px;
+}
+
+.option .time_group ul .time{
+    float: left;
+    border: 1px #BFBFBF solid;
+    height: 30px;
+    width: 65px;
+    margin: 5px;
+    background-color: #feffdc;
+    font-weight: 400;
+    color: #4b4b4b;
+    cursor: pointer;
+}
+
+/* 인원수 */
+.option .number{
+    border-top: 1px #BFBFBF solid;
+    height: 50px;
+    display: flex;
+}
+
+.option .number .number_title{
+    font-size: 17px;
+    font-weight: 500;
+    margin: auto;
+}
+
+.option .number .info{
+    font-size: 13px;
+    margin: auto;
+    color: #6d6d6d;
+}
+
+.option .number .info span{
+    font-size: 13px;
+}
+
+.option .number input{
+    height: 30px;
+    width: 64px;
+    font-size: 16px;
+    margin: auto;
+}
+
+/* 메뉴 */
+.menu_box{
+    background-color: white;
+    padding: 0 5px;
+    grid-column-start: 3;
+    grid-row: 1 / span 2;
+}
+
+.menu_box .menu_title{
+    height: 50px;
+    display: flex;
+    border-bottom: 1px #BFBFBF solid;
+}
+
+.menu_box .menu_title .title{
+    font-size: 17px;
+    font-weight: 500;
+    margin: auto 5px;
+}
+
+.menu_box .reset{
+    margin: auto 5px;
+}
+
+.menu_box .reset input{
+    background-color: #FEFF90;
+    border: none;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.menu_box .wrapper{
+    overflow-y: scroll;
+    height: 670px;
+}
+
+    /* 스크롤바 설정*/
+.wrapper::-webkit-scrollbar{
+    width: 6px;
+}
+
+    /* 스크롤바 막대 설정*/
+.wrapper::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #BFBFBF;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 20px;    
+}
+
+    /* 스크롤바 뒷 배경 설정*/
+.wrapper::-webkit-scrollbar-track{
+    background-color: #FEFF90;
+}
+
+.menu_box .wrapper .menu{
+    padding: 16px 12px;
+    height: 100px;
+    display: flex;
+    border-bottom: 1px #BFBFBF solid;
+    line-height: 140%;
+}
+
+.menu_box .wrapper .menu input{
+    margin: auto 0;
+    margin-right: 5px;
+}
+
+.menu_box .wrapper .menu label .price{
+    font-size: 15px;
+}
+
+.menu_box .wrapper .menu label img{
+    width: 100px;
+    height: 100px;
+    float: right;
+}
+
+.menu_box .wrapper .menu label .description{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 24px;
+    font-size: 10.5px;
+    line-height: 120%;
+    margin-top: 3px;
+}
+
+.menu_box .wrapper .menu label select{
+    width: 140px;
+}
+
+/* 잔여좌석 */
+.seat{
+    grid-column: 1 / span 2;
+    padding: 0 5px;
+    background-color: white;
+    height: 300px;
+}
+    /* title */
+.seat .seat_title{
+    height: 30px;
+    display: flex;
+    border-bottom: 1px #BFBFBF solid;
+}
+
+.seat .seat_title .title{
+    margin: auto 3px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.seat .seat_title #seat_number{
+    margin: auto;
+    background-color: #FEFF90;
+}
+
+.seat .seat_title .seat_icon{
+    display: flex;
+    margin: auto 0;
+    margin-left: 20px;
+}
+
+.seat .seat_title .seat_icon .icon{
+    display: flex;
+    margin: 0 5px;
+}
+
+.seat .seat_title .seat_icon .icon .shape{
+    width: 18px;
+    height: 18px;
+    border: 1px #BFBFBF solid;
+    margin-right: 5px;
+}
+
+.seat .seat_title .seat_icon .icon .cant{
+    background-color: #BFBFBF;
+}
+
+.seat .seat_title .seat_icon .icon .can{
+    background-color: #feffdc;
+}
+
+.seat .seat_title .seat_icon .icon .choice{
+    background-color: #FEFF90;
+}
+
+.seat .seat_title .seat_icon .icon .title{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+    /* 좌석 선택창 */
+.seat .select_seat{
+    width: 80%;
+    height: 85%;
+    background-color: #f2f2f2;
+    margin: auto;
+    margin-top: 7px;
+}
+
+        /* 카운터 */
+.seat .select_seat .counter{
+    font-size: 13px;
+    color: black;
+    margin: 0 auto;
+    padding: 5px 10px;
+    width: 36px;
+    height: 15px;
+    border: 1px #BFBFBF solid;
+    border-top: none;
+}
+
+.seat .select_seat .container{
+    width: 100%;
+    height: 83.5%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    overflow-y: scroll;
+}
+
+/* 스크롤바 설정*/
+.container::-webkit-scrollbar{
+    width: 6px;
+}
+
+    /* 스크롤바 막대 설정*/
+.container::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: #BFBFBF;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 20px;    
+}
+
+    /* 스크롤바 뒷 배경 설정*/
+.container::-webkit-scrollbar-track{
+    background-color: #FEFF90;
+}
+
+
+.seat .select_seat .container .table-right .table4, .table2{
+    width: 90px;
+    height: 62px;
+    border: 1px #BFBFBF solid;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    margin: auto;
+    margin-bottom: 5px;
+    background-color: #fff;
+}
+
+.seat .select_seat .container .chair{
+    width: 22px;
+    height: 22px;
+    border: 1px #BFBFBF solid;
+    margin: 0 3px;
+    cursor: pointer;
+    background-color: #feffdc;
+}
+
+.seat .select_seat .container #T1-1,#T1-2,#T9-1,#T9-2 {
+    background-color: #BFBFBF;
+}
+
+        /* 입구 */
+.seat .select_seat .entrance{
+    color: black;
+    margin: 0 auto;
+    width: 36px;
+    height: 15px;
+    border: 1px #BFBFBF solid;
+    border-bottom: none;
+    display: flex;
+}
+
+.seat .select_seat .entrance span{
+    font-size: 13px;
+    margin: auto;
+}
+
+/* 가격&결제 */
+.payment{
+    grid-column: 1 / span 3;
+    background-color: white;
+    padding: 0 5px;
+}
+    
+    /* 요청사항 */
+.payment .request{
+    height: 50px;
+    border-bottom: 1px #BFBFBF solid;
+    display: flex;
+}
+
+.payment .request .request_title{
+    margin: auto 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.payment .request input{
+    height: 30px;
+    width: 850px;
+    margin: auto;
+}
+
+    /* 장바구니 */
+.payment .menu_basket .basket_title{
+    display: flex;
+    height: 50px;
+    border-bottom: 1px #BFBFBF solid;
+}
+
+.payment .menu_basket .basket_title .title{
+    margin: auto 5px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.payment .menu_basket .basket_title #final_time,
+.final,#final_seat,#final_seat2,#final_seat3,#final_seat4{
+    font-size: 16px;
+    font-weight: 400;
+    margin: auto 0;
+    margin-left: 5px;
+}
+
+.payment .menu_basket .basket{
+    height: 73%;
+    padding: 5px;
+    display: grid;
+    margin: 10px;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.payment .menu_basket .basket .left .basket_menu{
+    margin-bottom: 8px;
+}
+
+.payment .menu_basket .basket .left .basket_menu .price{
+    display: inline;
+    float: right;
+    font-size: 16px;
+    margin-right: 8px;
+}
+.payment .menu_basket .basket .left .basket_menu .amount{
+    float: right;
+    margin-right: 50px;
+}
+
+.payment .menu_basket .basket .left .basket_menu .count{
+    width: 30px;
+}
+
+.payment .menu_basket .basket .left .basket_menu .select{
+    font-size: 15px;
+    line-height: 180%;
+    margin-left: 6px;
+    color: #686868;
+}
+
+.payment .menu_basket .basket .left{
+    grid-column: 1 / span 3;
+    
+}
+
+.payment .menu_basket .basket .right{
+    grid-column: 4 / span 2;
+    border-left: 1px #BFBFBF solid;
+    padding-left: 18px;
+    display: flex;
+}
+
+.payment .menu_basket .basket .right .wrapper{
+    width: 100%;
+    margin: auto;
+}
+
+.payment .menu_basket .basket .right .wrapper div{
+    margin: 10px 0;
+}
+
+.payment .menu_basket .basket .right .wrapper .total_price{
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.payment .menu_basket .basket .right .wrapper .method_payment{
+    margin-bottom: 20px;
+}
+
+.payment .menu_basket .basket .right .wrapper .submit .btn_submit{
+    float: right;
+    font-size: 16.5px;
+    background-color: #FEFF90;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 3px 8px;
+}
