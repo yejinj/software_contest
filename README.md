@@ -1,9 +1,11 @@
-### 성신여자대학교 소프트웨어 경진대회 출품작
-#### 구현 기능
-1. 사용자의 위치를 반환하여 반경 5km 내의 식당을 <b>카테고리</b>별로 추천
-2. 지도에 마커 위로 예약하기와 찜하기 기능 사용 가능, 찜한 식당 중 랜덤 추천 기능 구현
-3. 지도의 마커 클릭 시 해당 식당의 <b>이름과 위생등급</b> 반환
-4. 지도의 마커 클릭 시 식당 예약 창으로 연결
-5. 현재 시간과 날짜를 고려한 예약 기능 (18시 이후 2인 이상 금지)
-6. 카카오톡 및 SNS 공유하기 기능 구현
+#### University Software Competition Entry - Based on Web Programming <br><br>
+<br>
+<b> Done </b><br>
+1. Returns the user's location to recommend restaurants within a 5km radius by category<br>
+2. Reservation and wish functions can be used on the map by placing a marker on the map<br>
+3. Random recommendation function among favorite restaurants is implemented<br>
+4. Click the marker on the map to return the restaurant's name and hygiene level<br>
+5. Link to restaurant reservation window when clicking marker on map<br>
+6. Reservation function considering the current time and date (2 or more people prohibited after 18:00 considering the corona situation)<br>
+7. Implemented KakaoTalk and SNS sharing function<br>
 
