@@ -1,4 +1,4 @@
-#### University Software Competition Entry - Based on Web Programming <br><br>
+#### University Software Competition Entry - Based on using KAKAO map API <br><br>
 <br>
 <b> Done </b><br>
 1. Returns the user's location to recommend restaurants within a 5km radius by category<br>
